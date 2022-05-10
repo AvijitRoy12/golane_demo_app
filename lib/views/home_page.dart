@@ -1,7 +1,8 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:golane_demo_app/models/bottom_nav_bar.dart';
-import 'package:golane_demo_app/models/tickets.dart';
-import 'package:golane_demo_app/models/user_destination.dart';
+import 'package:golane_demo_app/models/center_tiles.dart';
+import 'package:golane_demo_app/models/buttons.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,37 +10,54 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Ticketing system'),
-      ),
-      body: Column(
-        children: [
-          Container(
-            height: 300,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.grey),
-            child: Text('Book your ticket'),
-          ),
-          user_route(Text('From')),
-          user_route(Text('To')),
-          Row(
-            children: [
-              Tickets(Text("Day Ticket")),
-              Tickets(Text("24 hrs Ticket")),
-            ],
-          ),
-          Row(
-            children: [
-              Tickets(Text("One Month Ticket")),
-              Tickets(Text("Three Months Ticket")),
-            ],
-          ),
-          BottomNavBar(),
-        ],
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Text('Zenjob'),
+      // ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  "You decide how you want to work",
+                  style: TextStyle(
+                    color: Color(0xFF2A1676),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                children: <Widget>[
+                  CenterTiles(Color(0xFF2D156C)),
+                  CenterTiles(Color(0xFF7453CE)),
+                ],
+              ),
+            ),
+            Elevated_Buttons(Text('Explore jobs'), Color(0xFF2D156C),),
+            Column(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text_Buttons(Text('Login'), Color(0xFF2D156C), (){}),
+                  Text_Buttons(Text('Register'), Color(0xFF2D156C), (){}),
+                ],
+              ),
+            ],)
+          ],
+        ),
       ),
     );
   }
 }
+
+
+
 
 
