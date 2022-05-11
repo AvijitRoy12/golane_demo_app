@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class Elevated_Buttons extends StatelessWidget {
   final Text text;
   final Color color;
+  final VoidCallback onPressed;
 
-  Elevated_Buttons(this.text, this.color);
+  Elevated_Buttons(this.text, this.color, this.onPressed);
 
 
   @override
@@ -16,7 +17,7 @@ class Elevated_Buttons extends StatelessWidget {
           primary: color,
           minimumSize: const Size.fromHeight(50), // NEW
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: text
       ),
     );
