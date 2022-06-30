@@ -5,6 +5,8 @@ import 'package:golane_demo_app/models/center_tiles.dart';
 import 'package:golane_demo_app/models/buttons.dart';
 import 'package:golane_demo_app/models/constants.dart';
 import 'package:golane_demo_app/views/explore_job.dart';
+import 'package:golane_demo_app/views/login.dart';
+import 'package:golane_demo_app/views/register.dart';
 
 class HomePage extends StatelessWidget {
   String image1 = 'https://cdn-icons-png.flaticon.com/512/1803/1803330.png';
@@ -81,12 +83,27 @@ class HomePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Text_Buttons(Text('Login'), Color(0xFF2D156C), () {}),
-                    Text_Buttons(Text('Register'), Color(0xFF2D156C), () {}),
+                    SizedBox(
+                        width: 175.0,
+                        child: Text_Buttons(
+                            Text('Login'), Color(0xFF2D156C), () {Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()));})),
+                    SizedBox(
+                      width: 175.0,
+                      child:
+                          Text_Buttons(Text('Register'), Color(0xFF2D156C), () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Register()));
+                      }),
+                    ),
                   ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
