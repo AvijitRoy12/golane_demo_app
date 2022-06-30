@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:golane_demo_app/models/navigationBar_components.dart';
 
@@ -11,7 +13,6 @@ class UserProfile extends StatefulWidget {
 class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    );
+    return CustomNavBar();
   }
 }

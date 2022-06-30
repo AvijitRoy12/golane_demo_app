@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:golane_demo_app/models/navigationBar_components.dart';
+import 'package:golane_demo_app/models/custom_page_route.dart';
 import 'package:golane_demo_app/models/registration_widgets.dart';
 import 'package:golane_demo_app/models/constants.dart';
 import 'package:golane_demo_app/views/user_profile.dart';
@@ -23,7 +25,7 @@ class _LoginState extends State<Login> {
             child: Stack(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.fromLTRB(15.0, 150.0, 0.0, 0.0),
+                  padding: EdgeInsets.fromLTRB(15.0, 80.0, 0.0, 0.0),
                   child: Text(
                     'Login',
                     style: TextStyle(
@@ -43,13 +45,35 @@ class _LoginState extends State<Login> {
                 SizedBox(height: 10.0),
                 Input_Text('Password', true),
                 SizedBox(height: 50.0),
-                Signup_Elevated_Button('Login', () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Login()));
-                }, kSignUpButtonColor),
+                Universal_Acc_Button(() {
+                  Navigator.of(context)
+                      .push(CustomPageRoute(child: UserProfile()));
+                }, Text('Login'), kSignUpButtonColor),
                 TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context)
+                        .push(CustomPageRoute(child: UserProfile()));
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                        transitionDuration: Duration(seconds: 1),
+                        transitionsBuilder: (BuildContext context,
+                            Animation<double> animaiton,
+                            Animation<double> secAnimation,
+                            child) {
+                          return ScaleTransition(
+                            scale: animaiton,
+                            alignment: Alignment.center,
+                            child: child,
+                          );
+                        },
+                        pageBuilder: (BuildContext context,
+                            Animation<double> animaiton,
+                            Animation<double> secAnimation) {
+                          return UserProfile();
+                        },
+                      ),
+                    );
                   },
                   child: Text(
                     'Forgot password?',

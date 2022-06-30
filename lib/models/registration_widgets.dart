@@ -1,35 +1,26 @@
+// ignore_for_file: prefer_const_constructors, unnecessary_new
+
 import 'package:flutter/material.dart';
 
-class Signup_Elevated_Button extends StatelessWidget {
-  final String text;
-  final Function onTap;
-  final Color color;
+class Universal_Acc_Button extends StatelessWidget {
+  Universal_Acc_Button(@required this.onPressed, this.text, this.color);
 
-  Signup_Elevated_Button(this.text, this.onTap, this.color);
+  final VoidCallback onPressed;
+  final Text text;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40.0,
-      child: Material(
-        borderRadius: BorderRadius.circular(20.0),
-        shadowColor: Color(0xFF450AE5),
-        color: color,
-        elevation: 7.0,
-        child: GestureDetector(
-          onTap: onTap(),
-          child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat'),
-            ),
-          ),
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: color,
+          onPrimary: Colors.white,
+          shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(30)),
+          minimumSize: const Size.fromHeight(40),
         ),
-      ),
-    );
+        onPressed: onPressed,
+        child: text);
   }
 }
 
@@ -53,13 +44,13 @@ class Input_Text extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
           borderSide: BorderSide(
             color: Color(0xFF2D156C),
-            width: 1.0,
+            width: 3.0,
           ),
         ),
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Color(0xFF2D156C),
-            width: 2.0,
+            color: Color(0xFF0676FF),
+            width: 1.0,
           ),
         ),
       ),

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
       ),
-      home: CustomNavBar(),
+      home: HomePage(),
     );
   }
 }

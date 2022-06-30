@@ -85,11 +85,13 @@ class HomePage extends StatelessWidget {
                   children: <Widget>[
                     SizedBox(
                         width: 175.0,
-                        child: Text_Buttons(
-                            Text('Login'), Color(0xFF2D156C), () {Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Login()));})),
+                        child:
+                            Text_Buttons(Text('Login'), Color(0xFF2D156C), () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Login()));
+                        })),
                     SizedBox(
                       width: 175.0,
                       child:

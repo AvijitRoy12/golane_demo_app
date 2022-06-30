@@ -15,7 +15,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
       _selectedIndex = index;
     });
     pageController.animateToPage(index,
-        duration: Duration(milliseconds: 1000), curve: Curves.bounceIn);
+        duration: Duration(milliseconds: 1000), curve: Curves.easeInOutCubicEmphasized);
   }
 
   @override
@@ -40,12 +40,13 @@ class _CustomNavBarState extends State<CustomNavBar> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.cases), label: 'Jobs'),
           BottomNavigationBarItem(icon: Icon(Icons.task), label: 'Tasks'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Man'),
         ],
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.purple,
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.blueGrey,
         backgroundColor: Colors.white,
         onTap: onTapped,
       ),

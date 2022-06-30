@@ -1,10 +1,13 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_new
 
 import 'package:flutter/material.dart';
 import 'package:golane_demo_app/models/constants.dart';
 import 'package:golane_demo_app/models/registration_widgets.dart';
+import 'package:golane_demo_app/views/home_page.dart';
 import 'package:golane_demo_app/views/login.dart';
 import 'package:golane_demo_app/views/register.dart';
+import 'package:golane_demo_app/views/user_profile.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -48,8 +51,18 @@ class _RegisterState extends State<Register> {
                 Input_Text('Password', true),
                 SizedBox(height: 10.0),
                 Input_Text('Confirm password', true),
-                SizedBox(height: 50.0),
-                Signup_Elevated_Button('Signup', () {}, kSignUpButtonColor),
+                SizedBox(height: 30.0),
+                Universal_Acc_Button(() {
+                  Navigator.of(context).push(
+                    PageTransition(
+                      child: UserProfile(),
+                      type: PageTransitionType.bottomToTop,
+                      childCurrent: widget,
+                      duration: Duration(milliseconds: 1000),
+                      reverseDuration: Duration(milliseconds: 1000),
+                    ),
+                  );
+                }, Text('Signup'), kSignUpButtonColor),
                 TextButton(
                   onPressed: () {
                     Navigator.push(context,
@@ -65,11 +78,11 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 SizedBox(height: 20.0),
-                Signup_Elevated_Button(
-                    'Continue with Google', () {}, kGoogleSignUpButtonColor),
+                Universal_Acc_Button(() {}, Text('Continue with google'),
+                    kGoogleSignUpButtonColor),
                 SizedBox(height: 20.0),
-                Signup_Elevated_Button(
-                    'Continue with Facebook', () {}, kFbSignUpButtonColor),
+                Universal_Acc_Button(() {}, Text('Continue with facebook'),
+                    kFbSignUpButtonColor),
                 SizedBox(height: 20.0),
               ],
             ),
